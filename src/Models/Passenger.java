@@ -1,19 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package airport;
+package Models;
+
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
+import java.util.List;
+import Models.Flight;
 
 /**
  *
  * @author edangulo
  */
 public class Passenger {
-    
+
     private final long id;
     private String firstname;
     private String lastname;
@@ -23,7 +21,8 @@ public class Passenger {
     private String country;
     private ArrayList<Flight> flights;
 
-    public Passenger(long id, String firstname, String lastname, LocalDate birthDate, int countryPhoneCode, long phone, String country) {
+    public Passenger(long id, String firstname, String lastname, LocalDate birthDate,
+        int countryPhoneCode, long phone, String country) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -31,9 +30,9 @@ public class Passenger {
         this.countryPhoneCode = countryPhoneCode;
         this.phone = phone;
         this.country = country;
-        this.flights = new ArrayList<>();
     }
 
+    
     public void addFlight(Flight flight) {
         this.flights.add(flight);
     }
@@ -65,9 +64,9 @@ public class Passenger {
     public String getCountry() {
         return country;
     }
-
+    
     public ArrayList<Flight> getFlights() {
-        return flights;
+        return new ArrayList<>(this.flights);
     }
 
     public void setFirstname(String firstname) {
@@ -93,21 +92,25 @@ public class Passenger {
     public void setCountry(String country) {
         this.country = country;
     }
-    
+
     public String getFullname() {
         return firstname + " " + lastname;
     }
     
     public String generateFullPhone() {
-        return "+" + countryPhoneCode + " " + phone;
+        return "+" + this.countryPhoneCode + " " + this.phone;
     }
     
     public int calculateAge() {
-        return Period.between(birthDate, LocalDate.now()).getYears();
+        return java.time.Period.between(this.birthDate, java.time.LocalDate.now()).getYears();
     }
-    
+
     public int getNumFlights() {
-        return flights.size();
+        return this.flights.size();
     }
-    
+
+    public String getFullPhone() {
+        return "+" + countryPhoneCode + " " + phone;
+    }
+
 }
