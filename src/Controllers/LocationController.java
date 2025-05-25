@@ -1,91 +1,68 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controllers;
 
-import Controllers.Utils.Response;
 import Models.Location;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
+import Repository.LocationRepository;
+import Utils.Response;
+import Utils.ResponseCode;
+import java.util.List;
 
 public class LocationController {
 
-    private final HashMap<String, Location> locations;
+    private final LocationRepository repository;
 
-    public LocationController() {
-        this.locations = new HashMap<>();
+    public LocationController(LocationRepository repository) {
+        this.repository = repository;
     }
 
-    // Registrar una nueva localización (aeropuerto)
-    public Response createLocation(String airportId, String airportName, String airportCity, String airportCountry, double airportLatitude, double airportLongitude) {
-        // Validaciones básicas de campos no vacíos
-        if (airportId == null || airportId.isEmpty() ||
-            airportName == null || airportName.isEmpty() ||
-            airportCity == null || airportCity.isEmpty() ||
-            airportCountry == null || airportCountry.isEmpty()) {
-            return new Response(400, "Ningún campo debe estar vacío");
-        }
-        // Validar formato del ID: 3 letras mayúsculas
-        if (!airportId.matches("[A-Z]{3}")) {
-            return new Response(400, "El ID debe tener 3 letras mayúsculas");
-        }
-        // Validar latitud [-90, 90]
-        if (airportLatitude < -90 || airportLatitude > 90) {
-            return new Response(400, "Latitud fuera del rango válido [-90, 90]");
-        }
-        // Validar longitud [-180, 180]
-        if (airportLongitude < -180 || airportLongitude > 180) {
-            return new Response(400, "Longitud fuera del rango válido [-180, 180]");
-        }
-        // Redondear latitud y longitud a 4 decimales
-        airportLatitude = Math.round(airportLatitude * 10000.0) / 10000.0;
-        airportLongitude = Math.round(airportLongitude * 10000.0) / 10000.0;
+    // Crear ubicación
+    public Response createLocation(String airportId, String airportName,
+            String airportCity, String airportCountry,
+            double airportLatitude, double airportLongitude) {
+        try {
+            // Validar existencia previa
+            if (repository.exists(airportId)) {
+                return new Response(ResponseCode.ERROR, "El ID del aeropuerto ya existe");
+            }
 
-        // Verificar unicidad del ID
-        if (locations.containsKey(airportId)) {
-            return new Response(400, "ID de localización ya existe");
+            // Crear ubicación (las validaciones se lanzan desde el constructor)
+            Location location = new Location(
+                    airportId,
+                    airportName.trim(),
+                    airportCity.trim(),
+                    airportCountry.trim(),
+                    airportLatitude,
+                    airportLongitude
+            );
+
+            repository.addLocation(location);
+            return new Response(ResponseCode.SUCCESS, "Aeropuerto registrado", location.clone());
+
+        } catch (IllegalArgumentException e) {
+            return new Response(ResponseCode.ERROR, e.getMessage());
         }
-
-        Location location = new Location(airportId, airportName, airportCity, airportCountry, airportLatitude, airportLongitude);
-        locations.put(airportId, location);
-
-        return new Response(200, "Localización creada", cloneLocation(location));
     }
 
-    // Obtener lista ordenada de localizaciones por airportId
-    public Response getLocation(String departureId) {
-        ArrayList<Location> locList = new ArrayList<>(locations.values());
-        Collections.sort(locList, Comparator.comparing(Location::getAirportId));
-        ArrayList<Location> copies = new ArrayList<>();
-        for (Location loc : locList) {
-            copies.add(cloneLocation(loc));
+    // Actualizar ubicación
+    public Response updateLocation(String airportId, String newName,
+            String newCity, String newCountry) {
+        Location location = repository.findById(airportId);
+        if (location == null) {
+            return new Response(ResponseCode.ERROR, "Aeropuerto no encontrado");
         }
-        return new Response(200, "Lista de localizaciones obtenida", copies);
+
+        // Actualizar campos modificables
+        location.setAirportName(newName.trim());
+        location.setAirportCity(newCity.trim());
+        location.setAirportCountry(newCountry.trim());
+
+        repository.updateLocation(location);
+        return new Response(ResponseCode.SUCCESS, "Aeropuerto actualizado", location.clone());
     }
 
-    // Buscar localización por ID (devuelve copia)
-    public Response findLocation(String airportId) {
-        Location loc = locations.get(airportId);
-        if (loc == null) {
-            return new Response(404, "Localización no encontrada");
-        }
-        return new Response(200, "Localización encontrada", cloneLocation(loc));
+    // Obtener todas las ubicaciones
+    // LocationController.java
+    public Response<List<Location>> getAllLocations() {
+        List<Location> locations = repository.getAllLocationsSortedById();
+        return new Response<>(ResponseCode.SUCCESS, "Ubicaciones obtenidas", locations);
     }
-
-    // Método para clonar Location (patrón Prototype)
-    private Location cloneLocation(Location loc) {
-        return new Location(
-            loc.getAirportId(),
-            loc.getAirportName(),
-            loc.getAirportCity(),
-            loc.getAirportCountry(),
-            loc.getAirportLatitude(),
-            loc.getAirportLongitude()
-        );
-    }
-    
-    
 }
