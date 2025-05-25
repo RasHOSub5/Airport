@@ -1,4 +1,4 @@
-package Controllers;
+package Core.Controllers;
 
 import Models.Plane;
 import Repository.PlaneRepository;

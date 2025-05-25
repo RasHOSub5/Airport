@@ -1,4 +1,4 @@
-package Models;
+package Core.Models;
 
 public class Location implements Cloneable {
     private final String airportId;    // Formato AAA (3 letras mayúsculas)

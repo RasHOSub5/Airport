@@ -1,4 +1,4 @@
-package Controllers;
+package Core.Controllers;
 
 import Models.Flight;
 import Models.Location;

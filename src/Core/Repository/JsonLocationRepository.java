@@ -1,4 +1,4 @@
-package Repository;
+package Core.Repository;
 
 import Models.Location;
 import org.json.JSONArray;

@@ -1,4 +1,4 @@
-package Controllers;
+package Core.Controllers;
 
 import Models.Location;
 import Repository.LocationRepository;

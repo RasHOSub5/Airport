@@ -1,4 +1,4 @@
-package Controllers;  // Asegúrate de que esté en el paquete 'controllers'
+package Core.Controllers;  // Asegúrate de que esté en el paquete 'controllers'
 
 import Models.Passenger;
 import Repository.PassengerRepository;

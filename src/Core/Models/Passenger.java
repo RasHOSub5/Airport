@@ -1,4 +1,4 @@
-package Models;
+package Core.Models;
 
 import Models.Flight;
 import java.time.LocalDate;
