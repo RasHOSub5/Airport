@@ -1,5 +1,6 @@
 package Core.Controllers;
 
+<<<<<<< HEAD
 import Core.Models.Flight;
 import Core.Models.Location;
 import Core.Models.Passenger;
@@ -7,6 +8,15 @@ import Core.Models.Plane;
 import Core.Repository.FlightRepository;
 import Core.Repository.LocationRepository;
 import Core.Repository.PlaneRepository;
+=======
+import Models.Flight;
+import Models.Location;
+import Models.Passenger;
+import Models.Plane;
+import Repository.FlightRepository;
+import Repository.LocationRepository;
+import Repository.PlaneRepository;
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
 import Utils.Response;
 import Utils.ResponseCode;
 import Utils.IdValidator;

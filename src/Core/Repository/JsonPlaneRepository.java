@@ -1,7 +1,12 @@
 package Core.Repository;
 
+<<<<<<< HEAD
 import Core.Models.Flight;
 import Core.Models.Plane;
+=======
+import Models.Flight;
+import Models.Plane;
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.FileWriter;

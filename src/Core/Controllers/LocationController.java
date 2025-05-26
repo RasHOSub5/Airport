@@ -1,7 +1,12 @@
 package Core.Controllers;
 
+<<<<<<< HEAD
 import Core.Models.Location;
 import Core.Repository.LocationRepository;
+=======
+import Models.Location;
+import Repository.LocationRepository;
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
 import Utils.Response;
 import Utils.ResponseCode;
 import java.util.List;

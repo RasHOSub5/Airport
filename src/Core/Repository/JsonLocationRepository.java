@@ -1,17 +1,24 @@
 package Core.Repository;
 
+<<<<<<< HEAD
 import Core.Models.Location;
 import Utils.Response;
 import Utils.ResponseCode;
 import Utils.JsonDataLoader;
 import Utils.CloneUtils;
+=======
+import Models.Location;
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+<<<<<<< HEAD
 import java.time.format.DateTimeFormatter;
+=======
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -57,7 +64,11 @@ public class JsonLocationRepository implements LocationRepository {
         return locations.stream().anyMatch(l -> l.getAirportId().equals(airportId));
     }
 
+<<<<<<< HEAD
     
+=======
+    @Override
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
     public List<Location> getAllLocationsSortedById() {
         return locations.stream()
             .sorted((l1, l2) -> l1.getAirportId().compareTo(l2.getAirportId()))

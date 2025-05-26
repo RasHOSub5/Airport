@@ -1,6 +1,10 @@
 package Core.Models;
 
+<<<<<<< HEAD
 import Core.Models.Flight;
+=======
+import Models.Flight;
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;

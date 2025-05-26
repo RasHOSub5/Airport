@@ -1,7 +1,12 @@
 package Core.Controllers;  // Asegúrate de que esté en el paquete 'controllers'
 
+<<<<<<< HEAD
 import Core.Models.Passenger;
 import Core.Repository.PassengerRepository;
+=======
+import Models.Passenger;
+import Repository.PassengerRepository;
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
 import Utils.Response;
 import Utils.ResponseCode;
 import Utils.IdValidator;

@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 package Core.Views;
 
 import Core.Controllers.FlightController;
 import Core.Models.Flight;
+=======
+package Views;
+
+import Controllers.FlightController;
+import Models.Flight;
+>>>>>>> 618bf3ce7120e29c31f0bdc433589ac4c49292ed
 import Utils.Response;
 import Utils.ResponseCode;
 import javax.swing.*;
