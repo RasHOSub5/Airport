@@ -2,21 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Views;
+package Core.Views;
 
-import Controllers.PassengerController;
-import Models.Flight;
-import Models.Location;
-import Models.Passenger;
-import Models.Plane;
-import Utils.Response;
-import Utils.ResponseCode;
+import Core.Models.Flight;
+import Core.Models.Location;
+import Core.Models.Passenger;
+import Core.Models.Plane;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -1440,8 +1436,6 @@ public class AirportFrame extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        try {
-        // Obtener valores de la interfaz
         long id = Long.parseLong(jTextField2.getText());
         String firstname = jTextField7.getText();
         String lastname = jTextField6.getText();
@@ -1454,55 +1448,8 @@ public class AirportFrame extends javax.swing.JFrame {
 
         LocalDate birthDate = LocalDate.of(year, month, day);
 
-        // Llamar al controlador
-        Response response = PassengerController.createPassenger(
-            id, 
-            firstname, 
-            lastname, 
-            birthDate,
-            phoneCode, 
-            phone, 
-            country
-        );
-
-        // Manejar respuesta
-        if (response.getCode() == ResponseCode.SUCCESS) {
-            // Actualizar UI si es exitoso
-            this.userSelect.addItem("" + id);
-            JOptionPane.showMessageDialog(this, 
-                response.getMessage(), 
-                "Registro exitoso", 
-                JOptionPane.INFORMATION_MESSAGE);
-            
-            // Limpiar campos
-            jTextField2.setText("");
-            jTextField7.setText("");
-            jTextField6.setText("");
-            jTextField3.setText("");
-            jTextField1.setText("");
-            jTextField5.setText("");
-            jTextField4.setText("");
-            MONTH.setSelectedIndex(0);
-            DAY.setSelectedIndex(0);
-        } else {
-            // Mostrar error específico
-            JOptionPane.showMessageDialog(this, 
-                response.getMessage(), 
-                "Error en registro", 
-                JOptionPane.ERROR_MESSAGE);
-        }
-        
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, 
-            "Error en formato numérico: Verifique que todos los campos numéricos contengan valores válidos",
-            "Error de formato", 
-            JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, 
-            "Error inesperado: " + e.getMessage(), 
-            "Error", 
-            JOptionPane.ERROR_MESSAGE);
-    }
+        this.passengers.add(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
+        this.userSelect.addItem("" + id);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed

@@ -8,12 +8,19 @@ package Main;
  *
  * @author Rashid
  */
-import Controllers.FlightController;
-import Controllers.PassengerController;
-import Views.FlightView;
-import Views.PassengerView;
-import Controllers.*;
-import Repository.*;
+import Core.Controllers.FlightController;
+import Core.Controllers.PassengerController;
+import Core.Controllers.*;
+import Core.Repository.FlightRepository;
+import Core.Repository.JsonFlightRepository;
+import Core.Repository.JsonLocationRepository;
+import Core.Repository.JsonPassengerRepository;
+import Core.Repository.JsonPlaneRepository;
+import Core.Repository.PassengerRepository;
+import Core.Repository.PlaneRepository;
+import Core.Repository.*;
+import Core.Views.FlightView;
+import Core.Views.PassengerView;
 import Views.*;
 
 public class Main {
@@ -22,7 +29,7 @@ public class Main {
         PassengerRepository passengerRepo = new JsonPassengerRepository();
         FlightRepository flightRepo = new JsonFlightRepository();
         PlaneRepository planeRepo = new JsonPlaneRepository();
-        LocationRepository locationRepo = new JsonLocationRepository();
+        LocationRepository locationRepo = (LocationRepository) new JsonLocationRepository();
 
         // Inicializar controladores
         PassengerController passengerController = new PassengerController(passengerRepo);
