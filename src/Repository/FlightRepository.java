@@ -1,6 +1,6 @@
-package Core.Repository;
+package Repository;
 
-import Core.Models.Flight;
+import Models.Flight;
 import java.util.List;
 
 public interface FlightRepository {

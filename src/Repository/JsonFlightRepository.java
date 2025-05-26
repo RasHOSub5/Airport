@@ -1,6 +1,6 @@
-package Core.Repository;
+package Repository;
 
-import Core.Models.Flight;
+import Models.Flight;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.FileWriter;

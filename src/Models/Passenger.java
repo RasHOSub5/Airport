@@ -1,6 +1,6 @@
-package Core.Models;
+package Models;
 
-import Core.Models.Flight;
+import Models.Flight;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package Core.Repository;
+package Repository;
 
-import Core.Models.Location;
+import Models.Location;
 import java.util.List;
 
 public interface LocationRepository {

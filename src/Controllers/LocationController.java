@@ -1,7 +1,7 @@
-package Core.Controllers;
+package Controllers;
 
-import Core.Models.Location;
-import Core.Repository.LocationRepository;
+import Models.Location;
+import Repository.LocationRepository;
 import Utils.Response;
 import Utils.ResponseCode;
 import java.util.List;

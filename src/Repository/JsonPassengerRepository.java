@@ -1,6 +1,6 @@
-package Core.Repository;
+package Repository;
 
-import Core.Models.Passenger;
+import Models.Passenger;
 import Utils.Response;
 import Utils.ResponseCode;
 import Utils.JsonDataLoader;

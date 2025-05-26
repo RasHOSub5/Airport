@@ -1,7 +1,7 @@
-package Core.Views;
+package Views;
 
-import Core.Controllers.LocationController;
-import Core.Models.Location;
+import Controllers.LocationController;
+import Models.Location;
 import Utils.Response;
 import Utils.ResponseCode;
 import javax.swing.*;

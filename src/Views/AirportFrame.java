@@ -2,17 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Core.Views;
+package Views;
 
-import Core.Models.Flight;
-import Core.Models.Location;
-import Core.Models.Passenger;
-import Core.Models.Plane;
+import Controllers.PassengerController;
+import Models.Flight;
+import Models.Location;
+import Models.Passenger;
+import Models.Plane;
+import Utils.Response;
+import Utils.ResponseCode;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -1447,9 +1451,7 @@ public class AirportFrame extends javax.swing.JFrame {
         String country = jTextField4.getText();
 
         LocalDate birthDate = LocalDate.of(year, month, day);
-
-        this.passengers.add(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
-        this.userSelect.addItem("" + id);
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed

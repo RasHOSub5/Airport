@@ -1,7 +1,7 @@
-package Core.Views;
+package Views;
 
-import Core.Controllers.PlaneController;
-import Core.Models.Plane;
+import Controllers.PlaneController;
+import Models.Plane;
 import Utils.Response;
 import Utils.ResponseCode;
 import javax.swing.*;

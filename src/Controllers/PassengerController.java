@@ -1,7 +1,7 @@
-package Core.Controllers;  // Asegúrate de que esté en el paquete 'controllers'
+package Controllers;  // Asegúrate de que esté en el paquete 'controllers'
 
-import Core.Models.Passenger;
-import Core.Repository.PassengerRepository;
+import Models.Passenger;
+import Repository.PassengerRepository;
 import Utils.Response;
 import Utils.ResponseCode;
 import Utils.IdValidator;

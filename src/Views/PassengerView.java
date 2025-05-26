@@ -1,8 +1,7 @@
-package Core.Views;
+package Views;
 
-
-import Core.Controllers.PassengerController;
-import Core.Models.Passenger;
+import Controllers.PassengerController;
+import Models.Passenger;
 import Utils.Response;
 import Utils.ResponseCode;
 import javax.swing.*;

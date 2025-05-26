@@ -1,7 +1,7 @@
-package Core.Controllers;
+package Controllers;
 
-import Core.Models.Plane;
-import Core.Repository.PlaneRepository;
+import Models.Plane;
+import Repository.PlaneRepository;
 import Utils.Response;
 import Utils.ResponseCode;
 import Utils.IdValidator;

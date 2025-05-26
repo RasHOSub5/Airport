@@ -1,6 +1,6 @@
-package Core.Repository;
+package Repository;
 
-import Core.Models.Plane;
+import Models.Plane;
 import java.util.List;
 
 public interface PlaneRepository {
